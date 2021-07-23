@@ -1,0 +1,66 @@
+@import "colors";
+
+:host {
+  background-color: $light-color;
+  box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+  border-radius: 5px;
+  padding: 15px;
+  margin: 130px 0 20px;
+  width: 100%;
+  max-width: 1440px;
+}
+
+.input-container {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+
+  .chips {
+    display: flex;
+    max-width: 100%;
+
+    &:not(:first-of-type) {
+      margin-left: 6px;
+    }
+
+    .chips-text {
+      background-color: $background-color;
+      color: $cyan;
+      line-height: 24px;
+      border-radius: 5px 0 0 5px;
+      padding: 5px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .close-icon {
+      background-color: $cyan;
+      border-radius: 0 5px 5px 0;
+      padding: 5px;
+      font-weight: 700;
+    }
+  }
+
+  .filter-input {
+    font: inherit;
+    border-radius: 5px;
+    flex: 1;
+    outline: none;
+    border: none;
+    background: none;
+
+  }
+}
+
+.btn {
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: $v-dark-color;
+  opacity: 0.6;
+  padding-left: 15px;
+}
+

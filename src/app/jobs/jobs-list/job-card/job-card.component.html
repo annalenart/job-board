@@ -1,0 +1,21 @@
+<div class="card-container" [class.featured]="job.featured">
+  <img class="logo" src="/./assets/images/{{job.logo}}" alt="{{job.company}}">
+  <div class="job-info">
+    <div class="job-tags">
+      <span>{{job.company}}</span>
+      <span *ngIf="job.new" class="tag">NEW!</span>
+      <span *ngIf="job.featured" class="tag dark">FEATURED</span>
+    </div>
+    <span>{{job.position}}</span>
+    <div class="job-details">
+      <span>{{job.postedAt}}</span>
+      <span>{{job.contract}}</span>
+      <span>{{job.location}}</span>
+    </div>
+  </div>
+  <div class="job-chips">
+    <span>{{job.role}}</span>
+    <span>{{job.level}}</span>
+    <span *ngFor="let language of job.languages">{{language}}</span>
+  </div>
+</div>
