@@ -1,3 +1,5 @@
+@import "colors";
+
 :host {
   display: flex;
   flex-direction: column;
@@ -6,4 +8,39 @@
   align-items: center;
   padding: 0 15px;
   flex-grow: 1;
+}
+
+.add-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: $light-color;
+  box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.2);
+
+  @media(min-width: 900px) {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+.add-btn::before {
+  content: '+';
+  height: 50px;
+  width: 50px;
+  font-size: 70px;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $dark-color;
+  opacity: 0.8;
+
+  @media(min-width: 900px) {
+    width: 80px;
+    height: 80px;
+    font-size: 110px;
+  }
 }

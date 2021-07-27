@@ -3,7 +3,7 @@
     <span class="chips-text">{{el}}</span>
     <img class="close-icon" src="./assets/images/close_white_24dp.svg" alt="close-icon" (click)="removeChips(i)">
   </div>
-  <input class="filter-input" type="text" (keydown.enter)="addChips(input)" #input>
+  <input class="filter-input" type="text" (keydown.space)="$event.preventDefault(); addChips(input)" #input>
 </div>
 <button class="btn" (click)="clearChips()">Clear</button>
 

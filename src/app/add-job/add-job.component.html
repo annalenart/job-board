@@ -1,0 +1,61 @@
+<div class="back-btn" [routerLink]="['..']">
+  <img class="back-arrow" src="./assets/images/arrow_back_ios_black_24dp.svg" alt="back-btn">
+</div>
+
+<span class="title">Post new job offer</span>
+<div class="scroll-container">
+  <form class="form-container" [formGroup]="jobForm" (ngSubmit)="onSubmit()">
+    <div class="form-control">
+      <label for="company">Company Name<span class="required"></span></label>
+      <input class="form-input" type="text" id="company" formControlName="company">
+    </div>
+    <div class="form-control">
+      <label for="position">Position<span class="required"></span></label>
+      <input class="form-input" type="text" id="position" formControlName="position">
+    </div>
+    <div class="form-control">
+      <label for="contract">Type of contract</label>
+      <input class="form-input" type="text" id="contract" formControlName="contract">
+    </div>
+    <div class="form-control">
+      <label for="location">Location</label>
+      <input class="form-input" type="text" id="location" formControlName="location">
+    </div>
+    <div class="form-control">
+      <label for="role">Role</label>
+      <input class="form-input" type="text" id="role" formControlName="role">
+    </div>
+    <div class="form-control">
+      <label for="level">Level</label>
+      <input class="form-input" type="text" id="level" formControlName="level">
+    </div>
+    <div class="input-container">
+      <label for="languages">Languages</label>
+      <div class="chips-wrapper">
+        <div class="chips" *ngFor="let language of languages.controls; index as i">
+          <span class="chips-text">{{language.value}}</span>
+          <img class="close-icon" src="./assets/images/close_white_24dp.svg" alt="close-icon" (click)="removeLanguage(i)">
+        </div>
+        <input class="form-input chips-input" id="languages" type="text" (keydown.space)="addLanguage(languagesInput)" #languagesInput>
+      </div>
+    </div>
+    <div class="input-container">
+      <label for="tools">Tools</label>
+      <div class="chips-wrapper">
+        <div class="chips" *ngFor="let tool of tools.controls; index as i">
+          <span class="chips-text">{{tool.value}}</span>
+          <img class="close-icon" src="./assets/images/close_white_24dp.svg" alt="close-icon" (click)="removeTool(i)">
+        </div>
+        <input class="form-input chips-input" id="tools" type="text" (keydown.space)="addTool(toolsInput)" #toolsInput>
+      </div>
+    </div>
+    <div class="check-container">
+      <input class="check" type="checkbox" id="check" formControlName="featured">
+      <label>Featured for an additional charge</label>
+    </div>
+    <div class="buttons">
+      <button class="btn" type="reset">Discard</button>
+      <button class="btn create" type="submit" [disabled]="!jobForm.valid">Create</button>
+    </div>
+  </form>
+</div>

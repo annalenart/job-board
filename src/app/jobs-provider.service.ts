@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 export interface Job {
-  id: number;
   company: string;
   logo: string;
   new: boolean;
@@ -14,8 +13,8 @@ export interface Job {
   postedAt: string;
   contract: string;
   location: string;
-  languages: Array<string>;
-  tools: Array<string>;
+  languages?: Array<string>;
+  tools?: Array<string>;
 }
 
 export type Jobs = Array<Job>
@@ -29,6 +28,11 @@ export class JobsProviderService {
   }
 
   getJobs(): Observable<Jobs> {
-    return this.http.get<Jobs>('https://job-board-4cfa8-default-rtdb.europe-west1.firebasedatabase.app/jobs.json');
+    return this.http.get<Jobs>('https://job-board-4cfa8-default-rtdb.europe-west1.firebasedatabase.app/jobs.json').pipe(
+    );
+  }
+
+  addJob(job: Job) {
+    return this.http.post('https://job-board-4cfa8-default-rtdb.europe-west1.firebasedatabase.app/jobs.json', job);
   }
 }

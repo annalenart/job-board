@@ -6,13 +6,14 @@
   background-color: $background-color;
   display: flex;
   flex-direction: column;
-  flex: 1;
+  height: 100vh;
+  width: 100vw;
 
   @media(min-width: 375px) {
     background-image: url("../assets/images/bg-header-desktop.svg");
   }
 
-  @media(min-width: 1360px) {
+  @media(min-width: 1440px) {
     background-size: contain;
   }
 }

@@ -15,15 +15,24 @@ export class JobsComponent implements OnInit {
 
   ngOnInit(): void {
     this.jobsProvider.getJobs().subscribe((jobs: Jobs) => {
-      this.allJobs = jobs;
-      this.jobs = jobs;
+      // to solve a problem with receiving posted data from firebase
+      const jobsArr = (Array.isArray(jobs) ? jobs : Object.values(jobs)) as Jobs;
+      this.allJobs = jobsArr;
+      this.jobs = jobsArr;
     });
   }
 
   filterJobs(filters: Array<string>) {
     this.jobs = this.allJobs.filter(job => {
       return JobsComponent.arrayToLower(filters)
-        .every((val: string) => JobsComponent.arrayToLower([job.role, job.level, ...job.languages]).includes(val));
+        .every((val: string) => {
+          const tags = [];
+          job.role && tags.push(job.role);
+          job.level && tags.push(job.level);
+          job.languages && tags.push(...job.languages);
+          job.tools && tags.push(...job.tools);
+          return JobsComponent.arrayToLower(tags).includes(val);
+        });
     });
   }
 
