@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { JobsProviderService } from '../jobs-provider.service';
 
@@ -8,6 +8,7 @@ import { JobsProviderService } from '../jobs-provider.service';
   styleUrls: ['./add-job.component.scss']
 })
 export class AddJobComponent implements OnInit {
+  @Output() filtersChanged = new EventEmitter<Array<string>>();
   jobForm: FormGroup;
   languages = new FormArray([]);
   tools = new FormArray([]);
@@ -29,22 +30,8 @@ export class AddJobComponent implements OnInit {
     });
   }
 
-  addLanguage(languagesInput: HTMLInputElement): void {
-    this.languages.push(new FormControl(languagesInput.value));
-    languagesInput.value = '';
-  }
-
-  addTool(toolsInput: HTMLInputElement): void {
-    this.tools.push(new FormControl(toolsInput.value));
-    toolsInput.value = '';
-  }
-
-  removeLanguage(index: number): void {
-    this.languages.removeAt(index);
-  }
-
-  removeTool(index: number): void {
-    this.tools.removeAt(index);
+  onFiltersChanged(filters: Array<string>) {
+    this.filtersChanged.emit(filters);
   }
 
   onSubmit() {
@@ -55,7 +42,24 @@ export class AddJobComponent implements OnInit {
     };
     this.jobsProvider.addJob(newJob).subscribe();
     this.jobForm.reset();
-    this.languages = new FormArray ([]);
-    this.tools = new FormArray ([]);
+    this.languages = new FormArray([]);
+    this.tools = new FormArray([]);
+  }
+
+  onAddTool(tool: string) {
+    this.tools.push(new FormControl(tool));
+  }
+
+  onRemoveTool(index: number) {
+    this.tools.removeAt(index);
+
+  }
+
+  onAddLanguage(language: string) {
+    this.languages.push(new FormControl(language));
+  }
+
+  onRemoveLanguage(index: number) {
+    this.languages.removeAt(index);
   }
 }

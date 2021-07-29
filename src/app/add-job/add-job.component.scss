@@ -7,7 +7,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0 15px;
   flex: 1;
   height: 100%;
 }
@@ -58,14 +57,13 @@
   display: flex;
   justify-content: center;
   overflow-y: scroll;
-
+  padding: 0 15px;
 
   .form-container {
     display: flex;
     flex-direction: column;
     width: 100%;
     max-width: 700px;
-
 
     & > :not(:first-child):not(:last-child) {
       margin-top: 10px;
@@ -75,57 +73,10 @@
       display: flex;
       flex-direction: column;
       width: 100%;
-    }
 
-    .input-container {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-
-      .chips-wrapper {
-        flex: 1;
-        display: flex;
-        flex-wrap: wrap;
-        background-color: #fff;
-        box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.2);
-        border-radius: 5px;
-
-        .chips {
-          display: flex;
-          max-width: 100%;
-          padding: 2px;
-
-          &:not(:first-of-type) {
-            margin-left: 6px;
-          }
-
-          .chips-text {
-            background-color: $background-color;
-            color: $cyan;
-            line-height: 24px;
-            border-radius: 5px 0 0 5px;
-            padding: 5px;
-          }
-
-          .close-icon {
-            background-color: $cyan;
-            border-radius: 0 5px 5px 0;
-            padding: 5px;
-            font-weight: 700;
-          }
-        }
+      & > :first-child {
+        margin-bottom: 3px;
       }
-
-      .chips-input {
-        font: inherit;
-        border-radius: 5px;
-        flex: 1;
-        outline: none;
-        border: none;
-        min-width: 100px;
-        box-shadow: none;
-      }
-
     }
 
     .form-input {
@@ -134,10 +85,7 @@
       outline: none;
       border: none;
       box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.2);
-
       padding: 8px;
-      margin-top: 2px;
-
     }
 
     .check-container {
@@ -190,10 +138,9 @@
   }
 }
 
-
 .required::after {
   content: ' *';
 }
 
 
-//zdjęcie przy 1920px ma 220px wysokości
+

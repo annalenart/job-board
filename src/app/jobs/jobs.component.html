@@ -1,5 +1,7 @@
 <div class="add-btn" [routerLink]="['/add']"></div>
-<app-jobs-filter (filtersChanged)="filterJobs($event)"></app-jobs-filter>
+<div class="wrapper">
+  <app-jobs-filter (filtersChanged)="filterJobs($event)"></app-jobs-filter>
+</div>
 <app-jobs-list [jobs]="(jobs$ | async) || []"></app-jobs-list>
 
 

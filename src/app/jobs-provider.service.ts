@@ -28,8 +28,7 @@ export class JobsProviderService {
   }
 
   getJobs(): Observable<Jobs> {
-    return this.http.get<Jobs>('https://job-board-4cfa8-default-rtdb.europe-west1.firebasedatabase.app/jobs.json').pipe(
-    );
+    return this.http.get<Jobs>('https://job-board-4cfa8-default-rtdb.europe-west1.firebasedatabase.app/jobs.json');
   }
 
   addJob(job: Job) {

@@ -10,6 +10,7 @@ import { JobsFilterComponent } from './jobs/jobs-filter/jobs-filter.component';
 import { JobsListComponent } from './jobs/jobs-list/jobs-list.component';
 import { JobCardComponent } from './jobs/jobs-list/job-card/job-card.component';
 import { AddJobComponent } from './add-job/add-job.component';
+import { InputWithChipsComponent } from './input-with-chips/input-with-chips.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AddJobComponent } from './add-job/add-job.component';
     JobsFilterComponent,
     JobsListComponent,
     JobCardComponent,
-    AddJobComponent
+    AddJobComponent,
+    InputWithChipsComponent
   ],
   imports: [
     BrowserModule,

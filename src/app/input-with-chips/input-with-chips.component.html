@@ -1,0 +1,8 @@
+<label class="label" for="input" *ngIf="labelTitle">{{labelTitle}}</label>
+<div class="chips-wrapper" [class.input-styles]="labelTitle">
+  <div class="chips" *ngFor="let el of filters; index as i">
+    <span class="chips-text">{{el}}</span>
+    <img class="close-icon" src="./assets/images/close_white_24dp.svg" alt="close-icon" (click)="removeChips(i)">
+  </div>
+  <input id="input" class="chips-input" type="text" (keydown.space)="$event.preventDefault(); addChips(input)" #input>
+</div>

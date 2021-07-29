@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
+import { InputWithChipsComponent } from '../../input-with-chips/input-with-chips.component';
 
 @Component({
   selector: 'app-jobs-filter',
@@ -7,23 +8,13 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class JobsFilterComponent {
   @Output() filtersChanged = new EventEmitter<Array<string>>();
-  filters: Array<string> = [];
-
-  addChips(input: HTMLInputElement): void {
-    if (input.value.length > 0) {
-      this.filters.push(input.value);
-      input.value = '';
-      this.filtersChanged.emit(this.filters);
-    }
-  }
+  @ViewChild('appChips') appChips: InputWithChipsComponent;
 
   clearChips(): void {
-    this.filters = [];
-    this.filtersChanged.emit(this.filters);
+    this.appChips.clearChips();
   }
 
-  removeChips(index: number): void {
-    this.filters.splice(index, 1);
-    this.filtersChanged.emit(this.filters);
+  onFiltersChanged(filters: Array<string>) {
+    this.filtersChanged.emit(filters);
   }
 }
