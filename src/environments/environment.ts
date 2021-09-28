@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  httpService: {jobs: 'https://job-board-4cfa8-default-rtdb.europe-west1.firebasedatabase.app/'}
+  apiUrl: 'http://localhost:3000'
 };
 
 /*

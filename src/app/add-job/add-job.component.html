@@ -4,6 +4,7 @@
 
 <span class="title">Post new job offer</span>
 <div class="scroll-container">
+
   <form class="form-container" [formGroup]="jobForm" (ngSubmit)="onSubmit()">
     <div class="form-control">
       <label for="company">Company Name<span class="required"></span></label>
@@ -46,4 +47,5 @@
       <button class="btn create" type="submit" [disabled]="!jobForm.valid">Create</button>
     </div>
   </form>
+
 </div>
