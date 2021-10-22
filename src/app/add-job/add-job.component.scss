@@ -12,6 +12,7 @@
 }
 
 .back-btn {
+  cursor: pointer;
   position: absolute;
   top: 20px;
   left: 20px;
@@ -116,6 +117,7 @@
       justify-content: space-between;
 
       .btn {
+        cursor: pointer;
         font: inherit;
         border-radius: 5px;
         border: none;

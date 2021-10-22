@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { JobsProviderService } from './jobs-provider.service';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +7,9 @@ import { JobsProviderService } from './jobs-provider.service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private dataStorageService: JobsProviderService) {
+  constructor() {
   }
 
   ngOnInit(): void {
-    this.dataStorageService.getJobs();
   }
-
 }

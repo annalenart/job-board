@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { combineLatest, Observable, Subject } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Job, Jobs, JobsProviderService } from '../jobs-provider.service';
 
 @Component({
@@ -12,7 +12,7 @@ export class JobsComponent implements OnInit {
 
   jobs$: Observable<Jobs>;
 
-  filters$ = new Subject<Array<string>>();
+  filters$ = new BehaviorSubject<Array<string>>([]);
 
   constructor(private jobsProvider: JobsProviderService) {
   }
@@ -20,16 +20,12 @@ export class JobsComponent implements OnInit {
   ngOnInit(): void {
     this.jobs$ = combineLatest([
       this.jobsProvider.getJobs(),
-      this.filters$.pipe(startWith([]))
+      this.filters$
     ])
       .pipe(
         map(([jobs, filters]: [Jobs, Array<string>]) => jobs.filter((job: Job) => JobsComponent.arrayToLower(filters)
           .every((val: string) => {
-            const tags = [];
-            job.role && tags.push(job.role);
-            job.level && tags.push(job.level);
-            job.languages && tags.push(...job.languages);
-            job.tools && tags.push(...job.tools);
+            const tags = [job.role, job.level, ...(job.languages || []), ...(job.tools || [])].filter(Boolean);
             return JobsComponent.arrayToLower(tags).includes(val);
           })))
       );

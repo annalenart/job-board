@@ -196,17 +196,24 @@
       ]
     },
     {
-      "company": "Anna",
-      "position": "front",
-      "contract": null,
-      "location": null,
-      "role": null,
-      "level": null,
-      "featured": null,
-      "languages": [],
-      "tools": [],
+      "company": "Dev",
+      "position": "Junior Frontend Developer",
+      "contract": "Full Time",
+      "location": "Poland Only",
+      "role": "Frontend",
+      "level": "Junior",
+      "featured": true,
+      "languages": [
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "RxJS"
+      ],
+      "tools": [
+        "Angular"
+      ],
       "new": true,
-      "postedAt": "28.09.2021",
+      "postedAt": "8.10.2021",
       "id": 11
     }
   ]
